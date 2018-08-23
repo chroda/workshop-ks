@@ -1,21 +1,35 @@
-var defaults = {
-	foo: 0,
-	bar: 4,
-	bam: {
-		qux: 0,
-		qam: 14
-	}
-};
+// var defaults = {
+// 	foo: 0,
+// 	bar: 4,
+// 	bam: {
+// 		qux: 0,
+// 		qam: 14
+// 	}
+// };
 
 ajax("http://fun.tld",handleResponse);
 
 
 // *******************************************************
 
-function handleResponse(/* destructuring here */) {
+function handleResponse({
+	foo = 0,
+	bar = 4,
+	bam: {
+		qux = 0,
+		qam =  14
+	} = {},
+	...other
+} = {}) {
 
 	checkData({
-		/* restructuring here */
+		foo,
+		bar,
+		bam: {
+			qux,
+			qam
+		},
+		...other
 	});
 
 }
