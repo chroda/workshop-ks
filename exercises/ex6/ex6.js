@@ -14,6 +14,15 @@ for (let power of powers(poem)) {
 	console.log(power);
 }
 
+function *powers(poem){
+	var re = /(?<=power of )(?<powerOf>(?:a )?\w+)(?:.*?)(?<=can )(?<can>\w+)/gs;
+	var match;
+		
+	while(match = re.exec(poem)){
+		yield `${match.groups.powerOf}: ${match.groups.can}`;
+	}
+}
+
 // Hints:
 //
 // function*
